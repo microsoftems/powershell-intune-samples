@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-05-16T00:00:00Z",
+  "source": "manual-enterprise-approval",
+  "releases": [
+    {
+      "platform": "iOS",
+      "latestVersion": "26.5",
+      "minimumSupportedVersion": "25.7",
+      "approvedVersion": "26.4",
+      "approvalState": "approved",
+      "releaseDate": "2026-05-01",
+      "approvalDate": "2026-05-10",
+      "notes": "Example only. Replace with enterprise-approved release data."
+    },
+    {
+      "platform": "iPadOS",
+      "latestVersion": "26.5",
+      "minimumSupportedVersion": "25.7",
+      "approvedVersion": "26.4",
+      "approvalState": "approved",
+      "releaseDate": "2026-05-01",
+      "approvalDate": "2026-05-10"
+    },
+    {
+      "platform": "macOS",
+      "latestVersion": "26.5",
+      "minimumSupportedVersion": "25.7",
+      "approvedVersion": "26.3",
+      "approvalState": "pilot",
+      "releaseDate": "2026-05-01",
+      "approvalDate": "2026-05-12"
+    }
+  ]
+}
