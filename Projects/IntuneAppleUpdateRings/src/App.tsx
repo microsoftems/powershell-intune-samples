@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { msalInstance, graphScopes } from './auth/msal';
 import { getAppleManagedDevices } from './collectors/appleDevices';
 import { recommendRing } from './rules/ringRecommendations';
+import { evaluateAppleDeviceVersion } from './rules/releaseIntelligence';
+import { ReleaseHealthBadge } from './components/ReleaseHealthBadge';
 
 export default function App() {
   const [devices, setDevices] = useState<any[]>([]);
@@ -42,7 +44,9 @@ export default function App() {
           <tr>
             <th>Device</th>
             <th>OS</th>
-            <th>Version</th>
+            <th>Installed</th>
+            <th>Latest</th>
+            <th>Health</th>
             <th>User</th>
             <th>Recommended Ring</th>
           </tr>
@@ -50,12 +54,17 @@ export default function App() {
         <tbody>
           {devices.map(device => {
             const recommendation = recommendRing(device);
+            const release = evaluateAppleDeviceVersion(device);
 
             return (
               <tr key={device.id}>
                 <td>{device.deviceName}</td>
                 <td>{device.operatingSystem}</td>
                 <td>{device.osVersion}</td>
+                <td>{release.latestVersion || 'Unknown'}</td>
+                <td>
+                  <ReleaseHealthBadge risk={release.risk} />
+                </td>
                 <td>{device.userPrincipalName}</td>
                 <td>{recommendation.ring}</td>
               </tr>
